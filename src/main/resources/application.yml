@@ -15,7 +15,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: online.linhaochen.trainingboard.entity
+  type-aliases-package: online.linhaochen.entity
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
