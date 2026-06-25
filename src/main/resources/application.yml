@@ -1,45 +1,26 @@
-# MyBatis配置
-mybatis:
-    # Mapper文件位置
-    mapper-locations: classpath:mappers/*xml
-    # 实体类包路径
-    type-aliases-package: com.lhc.mybatis.entity
-    # 配置
-    configuration:
-    # 是否开启驼峰命名映射
-        map-underscore-to-camel-case: true
-    # 日志实现类
-    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl#输出日志
-
-# 服务器配置
 server:
-    # 端口号
-    port: 8081
-    # Tomcat配置
-    tomcat:
-    # URI编码
-        uri-encoding: UTF-8
-    # Servlet配置
-    servlet:
-    # 编码配置
-        encoding:
-            # 是否强制使用指定编码
-            force: true
-            # 字符集
-            charset: UTF-8
-            # 是否启用编码
-            enabled: true
-# Spring配置
+  port: 8080
+
 spring:
-# 数据源配置
-    datasource:
-    # 数据库连接URL
-        url: jdbc:mysql://localhost:3306/trainingboard
-        # 数据库用户名
-        username: root
-        # 数据库密码
-        password: 121687
-        # 驱动类名
+  datasource:
+    url: jdbc:mysql://localhost:3306/training_board?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 121687
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: online.linhaochen.trainingboard.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-
+logging:
+  level:
+    online.linhaochen.trainingboard: DEBUG
